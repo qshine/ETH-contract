@@ -27,6 +27,7 @@ contract MyToken {
 
     // 授权额度申请
     function approve(address _spender, uint256 _value) public returns (bool success){
+        require(balances[msg.sender] >= _value);
         // 授权某人多少额度
         allowed[msg.sender][_spender] = _value;
         // 触发授权事件
